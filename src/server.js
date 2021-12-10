@@ -1,7 +1,20 @@
 import express from "express";
 
+const PORT = 4000;
 const app = express();
 
-const handleListening = () => console.log("server listening on port 4000 💥");
+const handleHome = (req, res) => {
+  console.log(req);
+  return res.send("Hello this is my server");
+};
 
-app.listen(4000, handleListening);
+const handleLogin = (req, res) => {
+  return res.send("Login Here");
+};
+
+app.get("/", handleHome);
+app.get("/login", handleLogin);
+
+const handleListening = () => console.log(`server listening on port http://localhost:${PORT} 💥`);
+
+app.listen(PORT, handleListening);
