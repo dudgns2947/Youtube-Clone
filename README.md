@@ -52,3 +52,11 @@ const functionName = (req, res) => { ... }; #함수는 express로부터 requset�
 \*브라우저가 requsest를 보내면 우리는 response를 return 해야한다.
 -> return res.end() # requsest를 종료시키는 방법
 -> return res.send( ... ) # 브라우저에 message를 response함.
+
+<Middlewares란?>
+모든 controller는 middleware이다.
+하나의 controller를 실행하고 난 뒤에 다음 controller를 실행하고 싶으면 next()를 사용한다.(return response가 없음)
+따라서 그 중간에 실행되는 (마지막에 실행되는 controller 이전) controller를 Middleware라고 한다.
+(controller는 req, res, next, 의 4가지 arguments를 가진다.)
+app.use() : global Middleware을 사용할수 있게 해주는 함수.
+ex) app.use(logger); => app.get("/", logger, handleHome); 이렇게 사용도 가능.
