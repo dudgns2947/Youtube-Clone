@@ -19,11 +19,12 @@
   },
   "homepage": "https://github.com/dudgns2947/Youtube-Clone#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/node": "^7.16.0",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.7",
     "@babel/preset-env": "^7.16.4",
     "nodemon": "^2.0.15"
   }

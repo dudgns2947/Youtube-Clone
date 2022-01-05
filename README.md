@@ -33,7 +33,8 @@ Babel 설치법 : npm install --save-dev @babel/core
 
 과정이 써있는 URL : https://babeljs.io/setup#installation
 
-<express>
+## <express>
+
 express를 다운받고싶으면 cmd창에 "npm i express"를 입력해주면 된다.
 
 express를 이용한 server:
@@ -49,14 +50,30 @@ GET, request 명령어들은 서버와 서버를handle하는 코드 사이에 �
 app.get("/", functionName) #root 서버에 functionName 이라는 함수를 GET함
 const functionName = (req, res) => { ... }; #함수는 express로부터 requset와 reponse 오브젝트를 가진다.
 
-\*브라우저가 requsest를 보내면 우리는 response를 return 해야한다.
+브라우저가 requsest를 보내면 우리는 response를 return 해야한다.
 -> return res.end() # requsest를 종료시키는 방법
 -> return res.send( ... ) # 브라우저에 message를 response함.
 
-<Middlewares란?>
+## <Middlewares란?>
+
 모든 controller는 middleware이다.
 하나의 controller를 실행하고 난 뒤에 다음 controller를 실행하고 싶으면 next()를 사용한다.(return response가 없음)
 따라서 그 중간에 실행되는 (마지막에 실행되는 controller 이전) controller를 Middleware라고 한다.
 (controller는 req, res, next, 의 4가지 arguments를 가진다.)
-app.use() : global Middleware을 사용할수 있게 해주는 함수.
+
+**app.use() : global Middleware을 사용할수 있게 해주는 함수.**
+
 ex) app.use(logger); => app.get("/", logger, handleHome); 이렇게 사용도 가능.
+
+app.get()에서 보통 마지막 함수만 return을 가진다. (MiddleWare들은 return하지 않고 next()해주는게 일반적.)
+
+## external middleware, Morgan
+
+HTTP requset logger middleware for node.js
+'''javascript
+npm i morgan
+import {name} from "morgan";
+'''
+morgan 함수를 호출하면 설정한대로 middleware를 return해준다.
+또한 path, status code, 응답시간을 보여줌.
+ex)app.use(morgan("dev")); (dev, combined, common, short, tiny 등 여러 옵션이 있음)
