@@ -77,3 +77,20 @@ import {name} from "morgan";
 morgan 함수를 호출하면 설정한대로 middleware를 return해준다.
 또한 path, status code, 응답시간을 보여줌.
 ex)app.use(morgan("dev")); (dev, combined, common, short, tiny 등 여러 옵션이 있음)
+
+## Router 란?
+
+Controller와 URL 관리를 쉽게 해준다(mini-application을 만듦)
+
+- / -> Home
+- /join -> Join
+- /search -> Search
+
+- /users/edit -> Edit user
+- /users/delete -> Delete user
+
+- /video/watch -> watch Video
+- /video/edit ->Edit Video
+- /video/delete -> Delete Video
+- /video/comment -> Commten on a video
+- /video/comment/delete -> Delete A Commnet of a Video
