@@ -38,12 +38,14 @@ Babel 설치법 : npm install --save-dev @babel/core
 express를 다운받고싶으면 cmd창에 "npm i express"를 입력해주면 된다.
 
 express를 이용한 server:
-'''
+
+```javascript
 import express from "express";
 const app = express();
 const handleListening = () => console.log("server listening on port 4000");
 app.listen(4000, handleListening);
-'''
+```
+
 위처럼 4줄의 코드로 가능하다
 
 GET, request 명령어들은 서버와 서버를handle하는 코드 사이에 있어야한다(sandwitch)
@@ -70,10 +72,12 @@ app.get()에서 보통 마지막 함수만 return을 가진다. (MiddleWare들�
 ## external middleware, Morgan
 
 HTTP requset logger middleware for node.js
-'''javascript
-npm i morgan
+
+```javascript
+ > npm i morgan
 import {name} from "morgan";
-'''
+```
+
 morgan 함수를 호출하면 설정한대로 middleware를 return해준다.
 또한 path, status code, 응답시간을 보여줌.
 ex)app.use(morgan("dev")); (dev, combined, common, short, tiny 등 여러 옵션이 있음)
@@ -81,16 +85,28 @@ ex)app.use(morgan("dev")); (dev, combined, common, short, tiny 등 여러 옵션
 ## Router 란?
 
 Controller와 URL 관리를 쉽게 해준다(mini-application을 만듦)
+또한 url을 그룹별로 나누면 좋은 아키텍쳐를 만들 수 있음(URL을 그룹화 한다)
 
 - / -> Home
 - /join -> Join
 - /search -> Search
 
-- /users/edit -> Edit user
-- /users/delete -> Delete user
+- /users/edit -> Edit My Profile
+- /users/logout -> Log Out
+- /users/delete -> Delete Profile
+- /users/:id -> See User
 
 - /video/watch -> watch Video
-- /video/edit ->Edit Video
-- /video/delete -> Delete Video
+- /video/:id/edit ->Edit Video
+- /video/:id/delete -> Delete Video
 - /video/comment -> Commten on a video
 - /video/comment/delete -> Delete A Commnet of a Video
+
+**controllers 폴더와 rotuers 폴더로 구분해 따로 사용**
+
+## Import/Export
+
+- import {a, b, c ...} : 한 파일 내에서 여러 controller들을 import가능
+
+- export default : 하나의 controller만 수출 가능
+- export {const ... controller} : 각각 컨트롤러마다 export해줌으로써 한 파일이 여러 컨트롤러를 수출가능
